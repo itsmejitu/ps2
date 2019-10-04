@@ -1,0 +1,18 @@
+<h1> AIT NEWS </h1>
+
+<table border = 10>
+	<tbody>
+		<tr>
+			<th> Image </th>
+			<th> Title </th>
+			<th> URL </th>
+		</tr>
+		<% @aitNews.each do |x| %>
+		<tr>
+			<td><%= image_tag x.image%></td>
+			<td> <%= x.title%></td>
+			<td> <a href=<%= x.url %> target =_blank><%= x.url%></a> </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

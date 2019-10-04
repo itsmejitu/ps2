@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects type="array">
+  <object>
+    <id type="integer">1</id>
+    <author-name>jithu</author-name>
+    <category>love</category>
+    <quote>jhgjhbj</quote>
+    <created-at type="dateTime">2019-10-04T11:05:50Z</created-at>
+    <updated-at type="dateTime">2019-10-04T11:05:50Z</updated-at>
+  </object>
+  <object>
+    <id type="integer">2</id>
+    <author-name>jbbkj</author-name>
+    <category>romance</category>
+    <quote>hjhb</quote>
+    <created-at type="dateTime">2019-10-04T11:06:19Z</created-at>
+    <updated-at type="dateTime">2019-10-04T11:06:19Z</updated-at>
+  </object>
+</objects>

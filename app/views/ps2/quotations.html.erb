@@ -1,0 +1,75 @@
+<h1>Ps2#quotations</h1>
+<hr/>
+<%= link_to "sql_sol", :action => :sql %>
+<br/>
+<%= link_to "transcript", :action => :transcript %>
+<br/>
+<%= link_to "input", :action => :input %>
+<hr/>
+<part-1>
+<% params[:erase] = "no" %>
+<%= link_to "erase my personalization", :action => :quotations, :erase => :yes %>
+<%= form_tag("/ps2/quotations", method: "get") do %>
+<%= text_field_tag :term, params[:term] %>
+<%= submit_tag 'Search' %>
+<% end %>
+<ul>
+<% if @tasks %>
+<% @tasks.each do |task| %>
+	<li><%= h task.author_name %>::<%= h task.quote %></li>
+<% end %>
+<% end %>
+</ul>
+
+<%= form_tag({action: :quotations}, multipart: true) do %>
+<%= file_field_tag 'importx' %>
+<%= submit_tag 'Import' %>
+<% end %>
+
+<h3>Quotations</h3>
+<ul>
+<% @quotations.each do |quotation| %>
+<li><%= h quotation.author_name %>: <%= h quotation.quote %>--<%= h quotation.category %><%= link_to "delete", :Action => :quotations, :id => quotation.id %> </li>
+<% end %>
+<br/>
+<%= link_to "export as xml", :action => :quotations, :export_as => :xmll %>
+<%= link_to "export as json", :action => :quotations, :export_as => :jsn %>
+<p><% @ar %></p>
+<br/>
+<% if params[:sort_by] == "date" %>
+<%= link_to "Sort by category", :action => :quotations, :sort_by => :category %>
+<% else %>
+<%= link_to "Sort by date", :action => :quotations, :sort_by => :date %>
+<% end %>
+<hr/>
+<p>If ID wouldn't given in the input data ActiveRecord automatically gives id in the sequence order for every row when it is created. </p>
+<h3>New quotation</h3>
+
+<%= form_for @quotation, :url => { :action => :quotations } do |form| %>
+
+<fieldset>
+<legend>Enter details</legend>
+<div class="form_row">
+<%= form.label :author_name %>
+<%= form.text_field :author_name, :size => 20, :maxlength => 40 %>
+</div>
+<div class="form_row">
+<%= form.label :category %>
+<%= form.text_field :category, list: "list_of_categories" %>
+<datalist id="list_of_categories">
+<%@list_of_categories.length.times do |i| %>
+    <option value=<%=@list_of_categories[i] %>>
+<% end %>
+</datalist>
+</div>
+<div class="form_row">
+<%= form.label :quote %>
+<%= form.text_area :quote, :rows => 2, :cols => 40, :maxlength => 500 %>
+</div>
+</fieldset>
+<p>
+<div class="form_row">
+<%= form.submit 'Create' %>
+</div>
+</p>
+<% end %>

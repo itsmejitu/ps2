@@ -1,0 +1,10 @@
+
+<h1> Divide-By-Zero-Exception </h1>
+<p> 
+1. Run:rails generate controller ps1/divide <br>
+2. Edit ps1_controller.rb add 'b= 80/0 to create divide by zero exception.'<br>
+3.To display the error we used e.backtrace along with 'begin' and 'rescue', which helped us to show the error in the stacktrace.<br>
+</p>
+<p><%= @backtrace%><p>
+
+<%=link_to "AIT website parsing", controller: "ps1", action: "parse" %>

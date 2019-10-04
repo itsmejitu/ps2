@@ -1,0 +1,2 @@
+class AitNews < ApplicationRecord
+end
